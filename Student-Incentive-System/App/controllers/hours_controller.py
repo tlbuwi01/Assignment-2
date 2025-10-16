@@ -1,9 +1,9 @@
-   from App.models.student import Student # Assuming explicit import from App.models 
+from App.models.student import Student # Assuming explicit import from App.models 
 from App.models.hours_recorded import HoursRecorded
 from App.database import db
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError 
 
-class HoursController
+class HoursController:
 
     @staticmethod
     def add_student_hours(student_id: int, staff_id: int, amount: int):
@@ -59,7 +59,7 @@ class HoursController
         if record.confirmed:
             return {"message": f"Record ID {hour_id} already confirmed."}, 400 # 400 Bad Request
         
-             return {"error": f"Record ID {hour_id} is not linked to any student."}, 400
+#return {"error": f"Record ID {hour_id} is not linked to any student."}, 400
 
         try:
             record.confirmed = True
