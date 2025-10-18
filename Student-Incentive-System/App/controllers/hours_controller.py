@@ -16,7 +16,7 @@ class HoursController
             return {"error": "Invalid ID or amount format provided."}, 400
 
         if amount <= 0:
-            return {"error": "Hours amount must be positive."}, 400
+            return {"error": "Hours amount must be positive and greater than 0."}, 400
 
         student = Student.query.get(student_id)    
         if not student:
