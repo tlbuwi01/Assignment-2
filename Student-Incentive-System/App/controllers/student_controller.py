@@ -56,3 +56,12 @@ class StudentController:
         else:
             return {"error": f"Student with ID {student_id} not found."}, 404 # 404 Not Found
 
+    @staticmethod
+    def login_student(name, password):
+        student = Student.query.filter_by(username=username).first()
+        if student and student.check_password(password):
+            token = create_access_token(identity=username)
+            response = jsonify(access_token=token)
+            set_access_cookies(response, token)
+            return response
+        return {"Invalid username or password"}, 401

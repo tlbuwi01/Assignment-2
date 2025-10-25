@@ -70,3 +70,12 @@ class StaffController:
             print(f"Database error during hour confirmation: {e}") 
             return {"error": "An unexpected error occurred during hour confirmation."}, 500
 
+    @staticmethod
+    def login_staff(name, password):
+        staff = Staff.query.filter_by(name=name).first()
+        if staff and staff.check_password(password):
+            token = create_access_token(identity=name)
+            response = jsonify(access_token=token)
+            set_access_cookies(response, token)
+            return response
+        return jsonify(message="Invalid STAFFID"), 401
