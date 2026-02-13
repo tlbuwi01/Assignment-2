@@ -1,4 +1,4 @@
-            from App.models.accolade import Accolade  
+from App.models.accolade import Accolade  
 from App.models.student import Student
 from App.database import db
 from sqlalchemy.exc import SQLAlchemyError 
